@@ -43,25 +43,38 @@ public class ComparatorTest {
 		stulist.add(s2);
 		stulist.add(s3);
 		stulist.add(s4);
-//		String order="Name,Age";
+		//String order="Name,Age";
+		// Collections.sort(stulist,ComparatorTest.COMPARE_BY_AGE);
+		// Collections.sort(stulist, ComparatorTest.COMPARE_BY_NAME);
+		Collections.sort(stulist, ComparatorTest.COMPARE_BY_AGE_NAME);
+		stulist.forEach(
+				student -> System.out.println("Name is ::" + student.getName() + " Age is ::" + student.getAge()));
+		// Collections.sort(stulist,ComparatorTest.COMPARE_BY_NAME);
 	    //Collections.sort(stulist,ComparatorTest.COMPARE_BY_AGE);
-	    Collections.sort(stulist,ComparatorTest.COMPARE_BY_NAME);
-	    stulist.forEach(student -> System.out.println("Name is ::"+student.getName() + " Age is ::"+student.getAge()));
-	    //Collections.sort(stulist,ComparatorTest.COMPARE_BY_NAME);
-//	    Collections.sort(stulist,ComparatorTest.COMPARE_BY_AGE);
-//	    stulist.forEach(student -> System.out.println("Name is ::"+student.getName() + " Age is ::"+student.getAge()));
-	
+	    //stulist.forEach(student -> System.out.println("Name is ::"+student.getName() + " Age is ::"+student.getAge()));
+
+	}
+
+	public static Comparator<student> COMPARE_BY_NAME = new Comparator<student>() {
+		public int compare(student one, student other) {
+			return one.getName().compareTo(other.getName());
+		}
+	};
+
+	public static Comparator<student> COMPARE_BY_AGE = new Comparator<student>() {
+		public int compare(student one, student other) {
+			return Integer.compare(one.getAge(), new Integer(10));
+		}
+	};
+
+	// Multiple comparators together
+	public static Comparator<student> COMPARE_BY_AGE_NAME = new Comparator<student>() {
+		public int compare(student one, student other) {
+			int i = one.getName().compareTo(other.getName());
+			if (i != 0)
+				return i;
+			else
+				return Integer.compare(one.getAge(), other.getAge());
+		}
+	};
 }
-	 public static Comparator<student> COMPARE_BY_NAME = new Comparator<student>() {
-	        public int compare(student one, student other) {
-	            return one.getName().compareTo(other.getName());
-	        }
-	    };
-
-	    public static Comparator<student> COMPARE_BY_AGE = new Comparator<student>() {
-	        public int compare(student one, student other) {
-	            return Integer.compare(one.getAge(),new Integer(10));
-	        }
-	    };
-
-}	    
