@@ -9,7 +9,7 @@ public class OsCommandExecutor {
 
 	public static void main(String[] args) {
 		String s = null;
-		String osCommand = "ping wwww.google.com";
+		String osCommand = "ping www.bvvsdw.com";
 		Logger logger = Logger.getLogger(OsCommandExecutor.class.getName());
 		try {
 			Process p = Runtime.getRuntime().exec(osCommand);

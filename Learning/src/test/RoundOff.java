@@ -8,5 +8,4 @@ public class RoundOff {
 		double b=2.344;
 		System.out.println(Math.round(a*b)*100.0/100.0);
 	}
-
 }
